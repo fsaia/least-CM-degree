@@ -2,6 +2,8 @@
 
 This repository holds code and lists for the paper *The least degree of a CM point on a modular curve* by Pete L. Clark, Tyler Genao, Paul Pollack, and Frederick Saia. 
 
+See **Required Lists** descriptions for dependencies. 
+
 ## Sporadic Checks
 
 - `sporadic_checks_X0_X1.m`: Knowing there are finitely many N for which the modular curves X_1(N) and X_0(N) may not have a sporadic CM point, this code is for checking such N further to see if we can guarantee a sporadic point. Specifically, we use the theorem of Faltings-Frey combined with lower bounds on the gonality of these curves and upper bounds on the least degree of a CM point on them. 
@@ -54,41 +56,41 @@ This repository holds code and lists for the paper *The least degree of a CM poi
 
 ## Required Lists
 
-- `fields.m`: List of quadratic number fields of discriminant -3 to -40,000 downloaded from the LMFDB on 23 July 2019. Required for
-  -`sporadic_checks_X0_X1.m`
-  -`sporadic_checks_XMN.m`
-  -`least_degreesX1.m`
-  -`least_degreesXMN.m`
+- `fields.m`: List of quadratic number fields of discriminant -3 to -40,000 downloaded from the LMFDB on 23 July 2019. Required for  
+  - `sporadic_checks_X0_X1.m`  
+  - `sporadic_checks_XMN.m`  
+  - `least_degreesX1.m`  
+  - `least_degreesXMN.m`  
   
-- `classnum_disc_list.m`: Sequence of absolute values of discriminants of imaginary quadratic fields of class number up to 100. Modified from list of M. Watkins. Required for
+- `classnum_disc_list.m`: Sequence of absolute values of discriminants of imaginary quadratic fields of class number up to 100. Modified from list of M. Watkins. Required for  
   - `least_degreesX1.m` *Only* if using the dcm_over_orders function (currently commented out, superseded by dcm_over_nonmax_orders)
 
   
-- `cond_disc_list_all_O.m`: List of all (not just maximal) imaginary quadratic orders of class number up to 100. Generated using list of maximal orders by M. Watkins. Required for
-  -`least_degreesX1.m`
-  -`least_degreesXMN.m` 
+- `cond_disc_list_all_O.m`: List of all (not just maximal) imaginary quadratic orders of class number up to 100. Generated using list of maximal orders by M. Watkins. Required for  
+  - `least_degreesX1.m`  
+  - `least_degreesXMN.m` 
 
 - `computing_nonmax_orders.m`: Used to generate list `cond_disc_list_all_0.m`.
 
-- `further_bads_X0_X1.m`: Copy of file from **Sporadic_Checks**. Required for
-  -`least_degreesX1.m` if computing `hyper_bads_X1.m`
-  -`least_degreesX0.m` if computing `hyper_bads_X0.m`
+- `further_bads_X0_X1.m`: Copy of file from **Sporadic_Checks**. Required for  
+  - `least_degreesX1.m` if computing `hyper_bads_X1.m`  
+  - `least_degreesX0.m` if computing `hyper_bads_X0.m`  
   
 
-- `further_bads_XMN.m`: Copy of file from **Sporadic_Checks**. Required for
-  -`least_degreesXMN.m` if computing `hyper_bads_XMN.m`
+- `further_bads_XMN.m`: Copy of file from **Sporadic_Checks**. Required for  
+  - `least_degreesXMN.m` if computing `hyper_bads_XMN.m`  
 
 
-- `dcm_list_X1_1mil.m`: Copy of file from **Least Degrees : X1**. Required for 
-  -`least_degreesX0.m` if computing `hyper_bads_X0`
+- `dcm_list_X1_1mil.m`: Copy of file from **Least Degrees : X1**. Required for   
+  - `least_degreesX0.m` if computing `hyper_bads_X0`  
 
-- `hyper_bads_X0.m`: Copy of file from **Least Degrees : X0**. Required for
-  -`least_degreesX0.m` if computing `no_sporadic_CM_X0.m` without first generating `hyper_bads_X0`
+- `hyper_bads_X0.m`: Copy of file from **Least Degrees : X0**. Required for  
+  - `least_degreesX0.m` if computing `no_sporadic_CM_X0.m` without first generating `hyper_bads_X0`  
   
 
-- `hyper_bads_X1.m`: Copy of file from **Least Degrees : X1**. Required for
-  -`least_degreesX1.m` if computing `no_sporadic_CM_X1.m` without first generating `hyper_bads_X1`
+- `hyper_bads_X1.m`: Copy of file from **Least Degrees : X1**. Required for  
+  - `least_degreesX1.m` if computing `no_sporadic_CM_X1.m` without first generating `hyper_bads_X1`  
   
 
-- `hyper_bads_XMN.m`: Copy of file from **Least Degrees : XMN**. Required for
-  -`least_degreesXMN.m` if computing `no_sporadic_CM_XMN.m` without first generating `hyper_bads_XMN`
+- `hyper_bads_XMN.m`: Copy of file from **Least Degrees : XMN**. Required for  
+  - `least_degreesXMN.m` if computing `no_sporadic_CM_XMN.m` without first generating `hyper_bads_XMN`
