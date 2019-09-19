@@ -617,7 +617,7 @@ end function;
 // an imaginary quadratic field K such that 
 // f^2*d_K < -4 and (T^o(O,N) * 2 / phi(N))*h(O) <= 100. 
 
-// NOTE: Using this function, we find that the first N for which we are not guarunteed 
+// NOTE: Using this function, we find that the first N for which we are not guaranteed 
 // to be computing d_{CM}(X_1(N)) exactly is 50450400
 
 dcm_exact_checker := function(N)
