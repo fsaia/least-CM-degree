@@ -51,7 +51,7 @@ end function;
 
 
 // is_bad: Given natural N, find least positive D such that -D is a quadratic residue 
-// modulo p for all primes p dividing N. Then, test if inequality which guaruntees 
+// modulo p for all primes p dividing N. Then, test if inequality which guarantees 
 // sporadic CM points on X(M,N) (coming from Frey-Faltings) is satisfied, yielding 
 // output "bad". Otherwise, "good". (Note: yells if discriminant is not found in list 
 // of imaginary quad discriminants used, disc_ClassNumber_list here)
