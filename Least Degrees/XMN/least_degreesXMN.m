@@ -737,6 +737,7 @@ dcm_exact_checker := function(M,N)
         elif is_of_Type1(N) or is_of_Type2(N) then
             return true;
         end if; 
+    end if; 
 
     for h in [1..100] do
         for order in cond_disc_list_allO[h] do
