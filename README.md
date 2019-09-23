@@ -32,7 +32,7 @@ See **Required Lists** descriptions for dependencies.
 
 ### X0 
 
-- `least_degreesX0.m`: The aim of this code is to compute, for an integer N >= 2, the least degree over Q of a CM point on the modular curve X_0(N). We directly use computations from `least_degreesX1.m` to do this. These computations are then used to try to guarantee the existence of a sporadic CM point on X_0(N) via Frey-Faltings and lower bounds on the gonality of X_0(N). We also prove there can be no sporadic CM point on X_0(N) for some N using the least degree computation combined with both upper bounds on the gonality of X_0(N) as well as knowledge of all N with delta(X_0(N)) <=2. 
+- `least_degreesX0.m`: The aim of this code is to compute, for an integer N >= 2, the least degree over Q of a CM point on the modular curve X_0(N). We directly use computations from `least_degreesX1.m` to do this. These computations are then used to try to guarantee the existence of a sporadic CM point on X_0(N) via Frey-Faltings and lower bounds on the gonality of X_0(N). We also prove there can be no sporadic CM point on X_0(N) for some N using the least degree computation combined with both upper bounds on the gonality of X_0(N) as well as knowledge of all N with delta(X_0(N)) <= 2. 
 
 - `hyper_bads_X0.m`: Sequence of 359 naturals N in `further_bads_X0_X1.m` such that X_0(N) is guaranteed a sporadic CM point via methods in `least_degreesX0.m`. This corresponds to the set F_0 in our paper.
 
