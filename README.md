@@ -28,7 +28,7 @@ See **Required Lists** descriptions for dependencies.
 
 - `dcm_list_X1_1mil.m`: List of least CM degree values for X_1(N) for N up to 1,000,000, each including a minimizing order. 
 
-- `dcm_list_all_min_orders_X1_10k.m`: List of least CM degree values for X_1(N) for N up to 10,000, with a list of all the minimizing orders of class number up to 100. 
+- `dcm_list_all_min_orders_X1_10k.m`: List of least CM degree values for X_1(N) for N up to 10,000, with a list of all the minimizing orders.
 
 ### X0 
 
