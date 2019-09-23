@@ -6,9 +6,9 @@ See **Required Lists** descriptions for dependencies.
 
 ## Sporadic Checks
 
-- `sporadic_checks_X0_X1.m`: Knowing there are finitely many N for which the modular curves X_1(N) and X_0(N) may not have a sporadic CM point, this code is for checking such N further to see if we can guarantee a sporadic point. Specifically, we use the theorem of Faltings-Frey combined with lower bounds on the gonality of these curves and upper bounds on the least degree of a CM point on them. 
+- `sporadic_checks_X0_X1.m`: Knowing that there are finitely many N for which the modular curves X_1(N) and X_0(N) may not have a sporadic CM point, this code is for checking such N further to see if we can guarantee a sporadic point. Specifically, we use the theorem of Faltings-Frey combined with lower bounds on the gonality of these curves and upper bounds on the least degree of a CM point on them. 
 
-- `sporadic_checks_XMN.m`: Knowing there are finitely many pairs (M,N) with M|N for which the modular curve X(M,N) may not have a sporadic CM point, this code is for checking such pairs further to see if we can guarantee a sporadic point. Specifically, we use the theorem of Faltings-Frey combined with a lower bound on the gonality of X(M,N) and an upper bound on the least degree of a CM point on X(M,N). 
+- `sporadic_checks_XMN.m`: Knowing that there are finitely many pairs (M,N) with M|N for which the modular curve X(M,N) may not have a sporadic CM point, this code is for checking such pairs further to see if we can guarantee a sporadic point. Specifically, we use the theorem of Faltings-Frey combined with a lower bound on the gonality of X(M,N) and an upper bound on the least degree of a CM point on X(M,N). 
 
 - `further_bads_X0_X1.m`: The sequence of N for which techniques from 'sporadic_checks_X0_X1' do not guarantee a sporadic CM point on X_0(N) and X_1(N). 
 
