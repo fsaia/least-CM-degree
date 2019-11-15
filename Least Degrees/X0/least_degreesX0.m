@@ -58,7 +58,7 @@ end function;
 // d_{CM}(X_1(N)) = phi(N)/2, with a minimizing order O_K where K = Q(i), as long as N is not Type 1. 
 
 is_of_Type2 := function(N)
-    if N lt 7 then
+    if N lt 5 then
         return false;
     elif N mod 4 eq 0 then
         return false;
