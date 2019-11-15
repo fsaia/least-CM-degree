@@ -411,7 +411,7 @@ end function;
 // d_{CM}(X_1(N)) = phi(N)/2, with a minimizing order O_K where K = Q(i), as long as N is not Type 1. 
 
 is_of_Type2 := function(N)
-    if N lt 7 then
+    if N lt 5 then
         return false;
     elif N mod 4 eq 0 then
         return false;
@@ -617,7 +617,7 @@ end function;
 // an imaginary quadratic field K such that 
 // f^2*d_K < -4 and (T^o(O,N) * 2 / phi(N))*h(O) <= 100. 
 
-// NOTE: Using this function, we find that the first N for which we are not guarunteed 
+// NOTE: Using this function, we find that the first N for which we are not guaranteed 
 // to be computing d_{CM}(X_1(N)) exactly is 50450400
 
 dcm_exact_checker := function(N)
