@@ -84,17 +84,25 @@ T := function(f,d_K,M,N) //ONLY use N>1
     d := f^2*d_K;
 
     if (N eq 2) and (M eq 1) then
-        return 1;
+        if (d ne -3) and KroneckerSymbol(2,d) eq -1 then
+            return 3;
+        else
+            return 1;
+        end if;
+
     elif (N eq 2) and (M eq 2) then
     	return ( 2*(2-KroneckerSymbol(d,2)) ) / w;
+
     elif (N eq 3) and (M eq 1) then
         if KroneckerSymbol(d,3) eq -1 then
             return 8/w;
         else
             return 1;
         end if;
+
     elif (N eq 3) and (M eq 3) then
     	return ( 2*(3-KroneckerSymbol(d,3)) )/w;
+
     elif (N ge 4) then
     	//FM := Factorization(M);
         FN := Factorization(N);
@@ -103,6 +111,7 @@ T := function(f,d_K,M,N) //ONLY use N>1
             P := P*T_Tilde_PrimePower(f,d_K,pair[1],Valuation(M, pair[1]), pair[2]);
         end for;
         return P/w; 
+
     end if;
 end function;
 
