@@ -2,7 +2,7 @@
 // X(M,N) for all M|N for each 2 <= N <= 100.
 
 // Data is list of lists [* M,N,dcm,orders *], where
-// dcm is the minimum value of d_{O,CM}^{Q(zeta_M)}(X(M,N)) over imaginary quadratic orders O  of
+// dcm is the minimum value of d_{O,CM}(X(M,N)) over imaginary quadratic orders O  of
 // class number up to 100, and orders is complete sequence of sequences [f, d_K, h(O)] for all 
 // minimizing orders O of class number up to 100, where 
 // f is the conductor, d_K the fundamental discriminant, and h(O) is the class number of O
