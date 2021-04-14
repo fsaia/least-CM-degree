@@ -688,7 +688,7 @@ end function;
 
 // generating sequence
 // hyper_badsXMN : N in further_bads_XMN such that X(M,N) is still not determined to have a sporadic CM point
-// by minimizing d_{O,CM}(X(M,N)) over orders O of class number up to 100 (using dcm_over_nonmax_orders)
+// by minimizing d_{O,CM}^{Q(zeta_M)}(X(M,N)) over orders O of class number up to 100 (using dcm_over_nonmax_orders)
 // comparing to lower bound on the gonality of X(M,N). 
 
     // hyper_bads_XMN := [];
@@ -799,19 +799,20 @@ gonality_upper_bds := [1,1,1,1,1,1,1,1,1,1,
 
 
 // Here we create list no_sporadic_CM_XMN of values of N for which we find that 
-// d_{CM}(X(M,N)) >= gonality(X(M,N))
+// d_{CM}(X(M,N)) >= gonality_Q(X(M,N)) via fact that 
+// gonality_Q(X(M,N)) >= gonality_Q(X_1(N)) * phi(M) * M
 
 // generating sequence 
-// no_sporadic_CM_XMN = sequence of all N such that, using above bounds and *exact* d_{CM}(X(M,N)) 
-// calculations (dcm_exact_checker shows exactness for all relevant pairs), 
-// we can provably say X(M,N) has no sporadic CM points
+// no_sporadic_CM_XMN = sequence of all pairs (M,N) with M>1 and M|N such that, using above 
+// bounds and *exact* d_{CM}(X(M,N)) calculations (dcm_exact_checker shows exactness for all 
+// relevant pairs), we can provably say X(M,N) has no sporadic CM points
 
     // load "hyper_bads_XMN.m";
 
     // no_sporadic_CM_XMN:=[];
 
-    // for pair in [pair : pair in hyper_bads_XMN | pair[2] le 250] do
-    //     if dcm_over_nonmax_orders(pair[1],pair[2])[4] ge (gonality_upper_bds[pair[2]] * EulerPhi(pair[1]) * pair[1]) then
+    // for pair in [pair : pair in hyper_bads_XMN | (pair[1] gt 1) and (pair[2] le 250)] do
+    //     if dcm_over_nonmax_orders(pair[1],pair[2])[4] ge (gonality_upper_bds[pair[2]] * pair[1]) then
     //         Append(~no_sporadic_CM_XMN, pair);
     //     end if; 
     // end for;
@@ -819,5 +820,3 @@ gonality_upper_bds := [1,1,1,1,1,1,1,1,1,1,
     // SetOutputFile("no_sporadic_CM_XMN.m");
     // print no_sporadic_CM_XMN;
     // UnsetOutputFile();
-
-
