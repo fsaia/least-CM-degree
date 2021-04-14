@@ -1,7 +1,7 @@
-// unknown_X1 : Sequence of all 230 values of N for which we do not yet know
+// unknown_X1 : Sequence of all 227 values of N for which we do not yet know
 // whether X_1(N) has a sporadic CM point. 
 
-unknown_X1 := [ 31, 34, 37, 39, 41, 43, 49, 50, 53, 57, 58, 61, 62, 65, 66, 67, 68, 73, 74, 
+unknown_X1 := [ 37, 41, 43, 49, 50, 53, 57, 58, 61, 62, 65, 66, 67, 68, 73, 74, 
 76, 78, 79, 82, 83, 84, 85, 86, 88, 89, 91, 92, 93, 95, 97, 98, 99, 100, 101, 
 102, 103, 104, 106, 107, 109, 110, 112, 113, 114, 115, 116, 117, 118, 119, 120, 
 121, 122, 123, 124, 125, 126, 127, 128, 131, 132, 134, 135, 136, 137, 138, 141, 
