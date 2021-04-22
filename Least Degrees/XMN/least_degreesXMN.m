@@ -1,5 +1,5 @@
-// The aim of this code is to compute, for integers M, N >= 2 with M | N, the least degree over Q(zeta_M) 
-// of a CM point on the modular curve X(M,N). We denote the degree by d_{CM}^{Q(zeta_M}}(X(M,N)). 
+// The aim of this code is to compute, for integers M, N >= 2 with M | N, the least degree over Q 
+// of a CM point on the modular curve X(M,N). We denote the degree by d_{CM}(X(M,N)). 
 
 // We then use this to try to guarantee the existence of a sporadic CM point on X(M,N), or else
 // to try to prove there can be no such point on this curve. 
@@ -8,7 +8,7 @@
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 //
-// Computing d_{O,CM}^{Q(zeta_M}}(X(M,N)) for 
+// Computing d_{O,CM}(X(M,N)) for 
 // a given order O
 //
 //////////////////////////////////////////////////////////////
@@ -395,7 +395,7 @@ end for;
 
 // d_OCM_XMN : given conductor f = [\mathcal{O_K} : \mathcal{O}] of an order \mathcal{O} in an imaginary
 // quadratic field K, d_K the discriminant of K, and M|N positive integers with N>1, computes 
-// d_{O,CM}^{Q(zeta_M)}(X(M,N)) - the least degree over Q(\zeta_M) of a number field F for which there is an 
+// d_{O,CM}(X(M,N)) - the least degree over Q of a number field F for which there is an 
 // \mathcal{O}-CM elliptic curve over F and an injective group hom Z/MZ x Z/NZ --> E(F) 
 
 // NOTE: This function is not used below, as the list of orders we loop over is already sorted by 
@@ -426,13 +426,13 @@ d_OCM_XMN := function(f,d_K,M,N)
         return "discriminant -D not in list";
     else
         if f eq 1 then
-            return T0(f,d_K,M,N)*h_K / EulerPhi(M);
+            return T0(f,d_K,M,N)*h_K;
         else
             Prod := 1;
             for pair in Factorization(f) do
                 Prod := Prod*(1-KroneckerSymbol(d_K,pair[1])*(1/pair[1]));
             end for;
-            return ( (T0(f,d_K,M,N)*(2/w_K)*f*Prod*h_K) / EulerPhi(M) );
+            return (T0(f,d_K,M,N)*(2/w_K)*f*Prod*h_K);
         end if;
     end if;
 end function; 
@@ -442,7 +442,7 @@ end function;
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 //
-// Minimizing d_{O,CM}^{Q(zeta_M)}(X(M,N)) over orders O of 
+// Minimizing d_{O,CM}(X(M,N)) over orders O of 
 // class number <=100
 //
 //////////////////////////////////////////////////////////////
@@ -525,15 +525,12 @@ exceptions_to_type_2 := [[1,-3,9],[3,-3,9],[1,-11,11],[1,-7,14],[2,-7,14],[3,-3,
 
 
 
-// dcm_over_nonmax_orders : give naturals M | N, minimizes d_{O,CM}^{Q(zeta_M)}(X(M,N)) over imaginary 
+// dcm_over_nonmax_orders : give naturals M | N, minimizes d_{O,CM}(X(M,N)) over imaginary 
 // quadratic orders O of class number up to 100. Returns sequence 
-// [f, d_K, h(O), d_{O,CM}^{Q(zeta_M)}(X(M,N))] for a single minimizing order O of conductor f, 
+// [f, d_K, h(O), d_{O,CM}(X(M,N))] for a single minimizing order O of conductor f, 
 // fundamental discriminant d_K, and class number h(O).
 
 // NOTE: Takes into account Type1, Typ2, and Exceptional N in M=1 case to increase speed
-
-// NOTE: throughout function, dcm refers to dcm over Q. At the end, we divide by phi(M) to get dcm over 
-// Q(zeta_M)
 
 dcm_over_nonmax_orders := function(M,N)
 
@@ -560,8 +557,9 @@ dcm_over_nonmax_orders := function(M,N)
 
     phi_M := EulerPhi(M);
 
+    // lowest possible degree is phi_M, so we check for that here 
     if CondFundiscT0h[3] eq phi_M then
-        return [CondFundiscT0h[1], CondFundiscT0h[2], CondFundiscT0h[4], 1];
+        return [CondFundiscT0h[1], CondFundiscT0h[2], CondFundiscT0h[4], phi_M];
 
     else
         h0 := CondFundiscT0h[3]; // upper bound for h_{minimizing Disc}
@@ -570,30 +568,28 @@ dcm_over_nonmax_orders := function(M,N)
             for pair in cond_disc_list_allO[h] do
                 if T0(pair[1], pair[2], M, N) * h lt CondFundiscT0h[3] * CondFundiscT0h[4] then
                     CondFundiscT0h := [pair[1], pair[2], T0(pair[1], pair[2], M, N), h];
+
+                    // whenever we update, check if lowest possible dcm is reached
                     if T0(pair[1], pair[2], M, N) * h eq phi_M then
-                        return [CondFundiscT0h[1], CondFundiscT0h[2], CondFundiscT0h[4], CondFundiscT0h[3]];
+                        return [CondFundiscT0h[1], CondFundiscT0h[2], CondFundiscT0h[4], phi_M];
                     end if;
                 end if;
             end for;
             h:=h+1;
         end while;
     end if;
-    return [CondFundiscT0h[1], CondFundiscT0h[2], CondFundiscT0h[4], CondFundiscT0h[3]*CondFundiscT0h[4] / EulerPhi(M)];
+    return [CondFundiscT0h[1], CondFundiscT0h[2], CondFundiscT0h[4], CondFundiscT0h[3]*CondFundiscT0h[4]];
 end function;
 
 
 
-
-// dcm_all_minimizing_orders : give naturals M | N, minimizes d_{O,CM}^{Q(zeta_M)}(X(M,N)) over imaginary 
-// quadratic orders O of class number up to 100. Returns list [d_{O,CM}^{Q(zeta_M)}(X(M,N)),orders] 
-// where dcm is this minimum d_{O,CM}^{Q(zeta_M)}(X(M,N)) over such orders O and orders is complete 
+// dcm_all_minimizing_orders : given naturals M | N, minimizes d_{O,CM}(X(M,N)) over imaginary 
+// quadratic orders O of class number up to 100. Returns list [d_{O,CM}(X(M,N)),orders] 
+// where dcm is this minimum d_{O,CM}(X(M,N)) over such orders O and orders is complete 
 // sequence of sequences [f, d_K, h(O)] for all minimizing orders O of class number up to 100, where 
 // f is the conductor, d_K the fundamental discriminant, and h(O) is the class number of O
 
 // NOTE: Takes into account Type1, Typ2, and Exceptional N in M=1 case to increase speed
-
-// NOTE: throughout function, dcm refers to dcm over Q. At the end, we divide by phi(M) to get dcm over 
-// Q(zeta_M)
 
 dcm_all_minimizing_orders := function(M,N)
 
@@ -615,6 +611,7 @@ dcm_all_minimizing_orders := function(M,N)
         end if;
     end if;
 
+    // h=1 orders 
     dcm := T0(cond_disc_list_allO[1][1][1], cond_disc_list_allO[1][1][2], M, N);
     for i in [1..#cond_disc_list_allO[1]] do
         if T0(cond_disc_list_allO[1][i][1], cond_disc_list_allO[1][i][2], M, N) lt dcm then
@@ -678,7 +675,7 @@ end function;
 // loading sequence 
 // further_bads_XMN : sequence of N which we could not guarantee
 // a sporadic CM point on X(M,N) for all M|N using Frey-Faltings with 
-// the upper bound on d_{CM}^{Q(zeta_M)}(X_(M,N)) from Thm 5.1 (using any imaginary quadratic 
+// the upper bound on d_{CM}(X_(M,N)) from Thm 5.1 (using any imaginary quadratic 
 // discriminant D satisfying the Heegner hypothesis) and lower bound on 
 // \frac{\gamma}{2} from JKS04
 
@@ -688,7 +685,7 @@ end function;
 
 // generating sequence
 // hyper_badsXMN : N in further_bads_XMN such that X(M,N) is still not determined to have a sporadic CM point
-// by minimizing d_{O,CM}^{Q(zeta_M)}(X(M,N)) over orders O of class number up to 100 (using dcm_over_nonmax_orders)
+// by minimizing d_{O,CM}(X(M,N)) over orders O of class number up to 100 (using dcm_over_nonmax_orders)
 // comparing to lower bound on the gonality of X(M,N). 
 
     // hyper_bads_XMN := [];
@@ -696,7 +693,7 @@ end function;
     // for N in further_bads_XMN do
     //     FN := Factorization(N);
     //     for M in Divisors(N) do 
-    //         if dcm_over_nonmax_orders(M,N)[4] gt (RealField(10) ! ((119*M*phi_from_fact(N,FN)*psi_from_fact(N,FN))/48000)) then
+    //         if dcm_over_nonmax_orders(M,N)[4] gt (RealField(10) ! ((119*M*EulerPhi(M)*phi_from_fact(N,FN)*psi_from_fact(N,FN))/48000)) then
     //             Append(~hyper_bads_XMN, [M,N]);
     //         end if;
     //     end for;
@@ -725,7 +722,7 @@ end function;
 // dcm_exact_checker : given naturals M | N, determines if the dcm value obtained from 
 // dcm_over_nonmax_orders function is exact (returns true) rather than possibly just an upper bound 
 // (returns false). We do this by checking for an order O with [f,d_K] = [cond, fun_disc_K] in 
-// im quad fld K such that f^2*d_K < -4 and T^o(O,M,N)*h(O) <= 100. 
+// an imaginary quad fld K such that f^2*d_K < -4 and T^o(O,M,N)*h(O) <= 100. 
 
 // We use that phi(N)/2 | T^o(O,M,N) for disc(O)<-4, so suffices to check (T^o(O,M,N) * 2 / phi(N))*h(O) <= 100 
 // (which we did for the X_1(N) = X(1,N) computations; there is such an order for all N < 50450400). 
@@ -797,7 +794,6 @@ gonality_upper_bds := [1,1,1,1,1,1,1,1,1,1,
 761,396,486,465,504,420,630,480,574,375];
 
 
-
 // Here we create list no_sporadic_CM_XMN of values of N for which we find that 
 // d_{CM}(X(M,N)) >= gonality_Q(X(M,N)) via fact that 
 // gonality_Q(X(M,N)) >= gonality_Q(X_1(N)) * phi(M) * M
@@ -807,12 +803,16 @@ gonality_upper_bds := [1,1,1,1,1,1,1,1,1,1,
 // bounds and *exact* d_{CM}(X(M,N)) calculations (dcm_exact_checker shows exactness for all 
 // relevant pairs), we can provably say X(M,N) has no sporadic CM points
 
+// note: the list generated as below does not include pairs
+// (2,2), (3,3), (4,4), (5,5), (3,6), and (6,6), which we also note have no sporadic CM points
+// using low genus considerations / previous work
+
     // load "hyper_bads_XMN.m";
 
     // no_sporadic_CM_XMN:=[];
 
     // for pair in [pair : pair in hyper_bads_XMN | (pair[1] gt 1) and (pair[2] le 250)] do
-    //     if dcm_over_nonmax_orders(pair[1],pair[2])[4] ge (gonality_upper_bds[pair[2]] * pair[1]) then
+    //     if dcm_over_nonmax_orders(pair[1],pair[2])[4] ge (gonality_upper_bds[pair[2]] * phi(M) * pair[1]) then
     //         Append(~no_sporadic_CM_XMN, pair);
     //     end if; 
     // end for;
