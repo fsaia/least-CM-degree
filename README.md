@@ -20,7 +20,7 @@ See **Required Lists** descriptions for dependencies.
 
 - `least_degreesX1.m`: The aim of this code is to compute, for an integer N >= 2, the least degree over Q of a CM point on the modular curve X_1(N) (via methods of Bourdon-Clark '19). These computations are then used to try to guarantee the existence of a sporadic CM point on X_1(N) via Frey-Faltings and lower bounds on the gonality of X_1(N). We also prove there can be no sporadic CM point on X_1(N) for some N using the least degree computation combined with upper bounds on the gonality of X_1(N) from Derickx-van Hoeij '13. 
 
-- `hyper_bads_X1.m`: Sequence of 297 naturals N in `further_bads_X0_X1.m` such that X_1(N) is not guaranteed a sporadic CM point via methods in `least_degreesX1.m`. This corresponds to the set F_1 in our paper. 
+- `hyper_bads_X1.m`: Sequence of 297 naturals N in `further_bads_X0_X1.m` such that X_1(N) is guaranteed a sporadic CM point via methods in `least_degreesX1.m`. This corresponds to the set F_1 in our paper. 
 
 - `no_sporadic_CM_X1.m`: Sequence of the 67 values of N for which we prove X_1(N) has no sporadic CM point. 
 
@@ -34,25 +34,25 @@ See **Required Lists** descriptions for dependencies.
 
 - `least_degreesX0.m`: The aim of this code is to compute, for an integer N >= 2, the least degree over Q of a CM point on the modular curve X_0(N). We directly use computations from `least_degreesX1.m` to do this. These computations are then used to try to guarantee the existence of a sporadic CM point on X_0(N) via Frey-Faltings and lower bounds on the gonality of X_0(N). We also prove there can be no sporadic CM point on X_0(N) for some N in cases where delta(X_0(N)) <= 2. 
 
-- `hyper_bads_X0.m`: Sequence of 359 naturals N in `further_bads_X0_X1.m` such that X_0(N) is not guaranteed a sporadic CM point via methods in `least_degreesX0.m`. This corresponds to the set F_0 in our paper.
+- `hyper_bads_X0.m`: Sequence of 359 naturals N in `further_bads_X0_X1.m` such that X_0(N) is guaranteed a sporadic CM point via methods in `least_degreesX0.m`. This corresponds to the set F_0 in our paper.
 
 - `no_sporadic_CM_X0.m`: Sequence of the 50 values of N for which we prove X_0(N) has no sporadic CM point. 
 
-- `unknown_X0.m`: Sequence of the 113 values of N for which we do not know whether X_0(N) has a sporadic CM point. 
+- `unknown_X0.m`: Sequence of the 106 values of N for which we do not know whether X_0(N) has a sporadic CM point. 
 
 - `dcm_list_X0_1mil`: List of least CM degree values for X_0(N) for N up to 1,000,000, each including a minimizing order. 
 
 ### XMN
 
-- `least_degreesXMN.m`: The aim of this code is to compute, for integers M,N with M|N and M>1, the least degree over Q(\zeta_M) of a CM point on the modular curve X(M,N) (via methods of Bourdon-Clark '19). These computations are then used to try to guarantee the existence of a sporadic CM point on X(M,N) via Frey-Faltings and lower bounds on the gonality of X(M,N). We also prove there can be no sporadic CM point on X(M,N) for some M,N using the least degree computation combined with upper bounds on the gonality of X(M,N) derived from those of X_1(N) Derickx-van Hoeij '13. 
+- `least_degreesXMN.m`: The aim of this code is to compute, for integers M,N with M|N and M>1, the least degree over Q of a CM point on the modular curve X(M,N) (via methods of Bourdon-Clark '19). These computations are then used to try to guarantee the existence of a sporadic CM point on X(M,N) via Frey-Faltings and lower bounds on the gonality of X(M,N). We also prove there can be no sporadic CM point on X(M,N) for some M,N using the least degree computation combined with upper bounds on the gonality of X(M,N) derived from those of X_1(N) Derickx-van Hoeij '13. 
 
-- `hyper_bads_XMN.m`: Sequence of 480 pairs (M,N) in `further_bads_XMN.m` such that X(M,N) is not guaranteed a sporadic CM point via methods in `least_degreesXMN.m`.
+- `hyper_bads_XMN.m`: Sequence of 480 pairs (M,N) in `further_bads_XMN.m` such that X(M,N) is guaranteed a sporadic CM point via methods in `least_degreesXMN.m`.
 
-- `no_sporadic_CM_XMN.m`: Sequence of the 31 pairs (M,N) with M|N and M>1 for which we prove X(M,N) has no sporadic CM point. 
+- `no_sporadic_CM_XMN.m`: Sequence of the 37 pairs (M,N) with M|N and M>1 for which we prove X(M,N) has no sporadic CM point. 
 
 - `unknown_XMN.m`: Sequence of the 146 pairs (M,N) with M|N and M>1 for which we do not know whether X(M,N) has a sporadic CM point. For pairs with M=1 corresponding to X(1,N) = X_1(N), see `unknown_X1.m`. 
 
-- `dcm_bounds_list_XMN_100`: List of upper bounds on least CM degree values for X(M,N) for all M|N for N up to 100, including a list of all orders of class number up to 100 yielding this upper bound. For N<53, these least CM degree values are exact. 
+- `dcm_bounds_list_XMN_100`: List of upper bounds on least CM degree values for X(M,N) for all M|N for N up to 100, including a list of all orders of class number up to 100 yielding this upper bound. For all N<53, these least CM degree values are exact. 
 
 ## Required Lists
 
