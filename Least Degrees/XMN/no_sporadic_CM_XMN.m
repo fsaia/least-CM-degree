@@ -1,10 +1,18 @@
-// no_sporadic_CM_XMN : sequence of the 31 sequences [M,N] with M > 1, M|N for which d_CM(X(M,N)) 
-// is shown to be at least gonality_Q(X(M,N)), hence for which X(M,N) has no sporadic CM point.
-// The upper bounds on gonality used come from Derickx and Hoeij.
+// no_sporadic_CM_XMN : sequence of the 37 sequences [M,N] with M > 1, M|N for which we show
+// that X(M,N) has no sporadic CM points. For 6 of these pairs, this comes from low genus
+// considerations / previous work, while for the remaining 31 pairs d_CM(X(M,N)) 
+// is shown to be at least gonality_Q(X(M,N)). The upper bounds on gonality used come 
+// from Derickx and Hoeij.
 
 no_sporadic_CM_XMN := [
+    [ 2, 2 ],
+    [ 3, 3 ],
     [ 2, 4 ],
+    [ 4, 4 ],
+    [ 5, 5 ],
     [ 2, 6 ],
+    [ 3, 6 ],
+    [ 6, 6 ],
     [ 2, 8 ],
     [ 4, 8 ],
     [ 3, 9 ],
