@@ -84,10 +84,10 @@ See **Required Lists** descriptions for dependencies.
 - `dcm_list_X1_1mil.m`: Copy of file from **Least Degrees : X1**. Required for   
   - `least_degreesX0.m` if computing `hyper_bads_X0` or using dcm_X0_all_minimizing_orders function
 
-- 'dcm_list_X0_1mil.m': Copy of file from **Least Degrees : X0**. Required for   
+- `dcm_list_X0_1mil.m`: Copy of file from **Least Degrees : X0**. Required for   
   - `least_degreesX0.m` (only if using dcm_X0_all_minimizing_orders function)
 
-- 'dcm_list_all_min_orders_X1_10k.m': Copy of file from **Least Degrees : X1**. Required for   
+- `dcm_list_all_min_orders_X1_10k.m`: Copy of file from **Least Degrees : X1**. Required for   
   - `least_degreesX0.m` (only if using dcm_X0_all_minimizing_orders function)
 
 - `hyper_bads_X0.m`: Copy of file from **Least Degrees : X0**. Required for  
